@@ -1,6 +1,6 @@
 {
-  "name": "@jabz/nodetemplate",
-  "version": "1.0.4",
+  "name": "@jabz/db-logger",
+  "version": "1.0.0",
   "description": "",
   "main": "./lib/index.js",
   "publishConfig": {
