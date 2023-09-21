@@ -1,6 +1,6 @@
 {
   "name": "@jabz/db-logger",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "./lib/index.js",
   "publishConfig": {
@@ -11,7 +11,8 @@
     "prisma"
   ],
   "scripts": {
-    "postinstall": "npx prisma generate",
+    "append-prisma": "ts-node ./scripts/jabPrisma.ts",
+    "postinstall": "npm run append-prisma && prisma generate",
     "test": "jest",
     "lint": "npx eslint . --max-warnings 0",
     "increment": "npm version patch",

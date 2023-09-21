@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model General {
+  id               String   @id
+  displayTimeStamp String   @default("")
+  timeStamp        BigInt
+  title            String
+  tags             String[]
+  message          String?
+}
+
+model Verbose {
+  id               String   @id @default(uuid())
+  displayTimeStamp String   @default("")
+  timeStamp        BigInt
+  title            String
+  tags             String[]
+  message          String?
+}
+
+model Warning {
+  id               String   @id
+  displayTimeStamp String   @default("")
+  timeStamp        BigInt
+  title            String
+  tags             String[]
+  message          String?
+}
+
+model Error {
+  id               String   @id
+  displayTimeStamp String   @default("")
+  timeStamp        BigInt
+  title            String
+  tags             String[]
+  message          String?
+}
