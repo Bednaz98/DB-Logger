@@ -12,6 +12,7 @@ datasource db {
 
 model General {
   id               String   @id
+  sessionID        String   @default(uuid())
   displayTimeStamp String   @default("")
   timeStamp        BigInt
   title            String
@@ -21,6 +22,7 @@ model General {
 
 model Verbose {
   id               String   @id @default(uuid())
+  sessionID        String   @default(uuid())
   displayTimeStamp String   @default("")
   timeStamp        BigInt
   title            String
@@ -30,6 +32,7 @@ model Verbose {
 
 model Warning {
   id               String   @id
+  sessionID        String   @default(uuid())
   displayTimeStamp String   @default("")
   timeStamp        BigInt
   title            String
@@ -39,6 +42,7 @@ model Warning {
 
 model Error {
   id               String   @id
+  sessionID        String   @default(uuid())
   displayTimeStamp String   @default("")
   timeStamp        BigInt
   title            String

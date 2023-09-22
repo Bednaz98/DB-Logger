@@ -10,7 +10,7 @@ export enum LogType {
     error,
 }
 
-type LogFunction = (title: string, message?: string | JSON | Object) => Promise<void>
+type LogFunction = (sessionID: string, title: string, message?: string | JSON | Object) => Promise<void>
 
 export interface LoggerConfig {
     batchLogCount?: number
@@ -21,9 +21,24 @@ export interface LoggerConfig {
 }
 
 export interface Logger {
-    log: (type: LogType, title: string, message?: string | JSON | Object) => Promise<void>
+    log: (type: LogType, sessionID: string, title: string, message?: string | JSON | Object) => Promise<void>
     verbose: LogFunction,
     general: LogFunction,
     warning: LogFunction,
     error: LogFunction,
+}
+
+export type LogData = General | Warning | Verbose | Error
+
+
+export type LogFilter = {
+    title?: string
+    tags?: string[]
+    minTimeStamp?: number
+    maxTimeStamp?: number
+    message?: string
+}
+
+export interface LoggerFetch {
+    getLogs: (logTypes: LogType, filter?: LogFilter) => Promise<LogData[] | null>
 }
