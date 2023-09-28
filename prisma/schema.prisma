@@ -10,38 +10,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model General {
-  id               String   @id
-  sessionID        String   @default(uuid())
-  displayTimeStamp String   @default("")
-  timeStamp        BigInt
-  title            String
-  tags             String[]
-  message          String?
-}
-
-model Verbose {
-  id               String   @id @default(uuid())
-  sessionID        String   @default(uuid())
-  displayTimeStamp String   @default("")
-  timeStamp        BigInt
-  title            String
-  tags             String[]
-  message          String?
-}
-
-model Warning {
-  id               String   @id
-  sessionID        String   @default(uuid())
-  displayTimeStamp String   @default("")
-  timeStamp        BigInt
-  title            String
-  tags             String[]
-  message          String?
-}
-
-model Error {
-  id               String   @id
+model Log {
+  id               String   @id @unique
   sessionID        String   @default(uuid())
   displayTimeStamp String   @default("")
   timeStamp        BigInt

@@ -1,6 +1,6 @@
 import { JsonMask2Configs, JsonMaskOptions } from 'maskdata'
-import { General, Warning, Verbose, Error } from "@prisma/client";
-export { General, Warning, Verbose, Error };
+import { Log } from "@prisma/client";
+export { Log };
 
 
 export enum LogType {
@@ -10,25 +10,20 @@ export enum LogType {
     error,
 }
 
-type LogFunction = (sessionID: string, title: string, message?: string | JSON | Object) => Promise<void>
-
 export interface LoggerConfig {
     batchLogCount?: number
-    filterOptions?: JsonMask2Configs | JsonMaskOptions
+    filterOptions?: JsonMask2Configs
     enableDBLog?: boolean,
-    LogTypes?: { [type in LogType]?: boolean },
-    printConsole?: { [type in LogType]?: boolean },
+    printConsole?: boolean,
 }
 
 export interface Logger {
-    log: (type: LogType, sessionID: string, title: string, message?: string | JSON | Object) => Promise<void>
-    verbose: LogFunction,
-    general: LogFunction,
-    warning: LogFunction,
-    error: LogFunction,
+    log: (sessionID: string, title: string, message?: (string | JSON | Object), tags?: string[]) => Promise<void>
+    batchLogs: (logs: Log[]) => Promise<boolean>
+    batchSendLogs: () => Promise<boolean>
 }
 
-export type LogData = General | Warning | Verbose | Error
+export type LogData = Log
 
 
 export type LogFilter = {

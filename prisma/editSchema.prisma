@@ -1,34 +1,4 @@
-model General {
-  id               String   @id
-  sessionID        String   @default(uuid())
-  displayTimeStamp String   @default("")
-  timeStamp        BigInt
-  title            String
-  tags             String[]
-  message          String?
-}
-
-model Verbose {
-  id               String   @id @default(uuid())
-  sessionID        String   @default(uuid())
-  displayTimeStamp String   @default("")
-  timeStamp        BigInt
-  title            String
-  tags             String[]
-  message          String?
-}
-
-model Warning {
-  id               String   @id
-  sessionID        String   @default(uuid())
-  displayTimeStamp String   @default("")
-  timeStamp        BigInt
-  title            String
-  tags             String[]
-  message          String?
-}
-
-model Error {
+model Log {
   id               String   @id
   sessionID        String   @default(uuid())
   displayTimeStamp String   @default("")

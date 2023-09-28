@@ -13,10 +13,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.disable('x-powered-by');
-const config: LoggerConfig = {}
+const config: LoggerConfig = { batchLogCount: 5 }
 
 app.use('/logger', initLoggerRoute(config));
-app.get('*', (req, res) => {
+app.get('*', (_req, res) => {
     console.log('Server hit')
     res.status(404).send()
 })
