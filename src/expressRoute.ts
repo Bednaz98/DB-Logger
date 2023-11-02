@@ -1,15 +1,12 @@
 import { Router } from 'express'
 import DBLogger from './Logger'
 import { Log, LoggerConfig } from './types'
-import { v4 } from 'uuid';
 
 
 export function initLoggerRoute(initConfig?: LoggerConfig | undefined) {
     const LoggerRoute = Router();
 
     const Logger = new DBLogger(initConfig);
-    const loggerSessionID = v4()
-
 
     LoggerRoute.post('/singleLog', async (req, res) => {
         try {
@@ -20,11 +17,10 @@ export function initLoggerRoute(initConfig?: LoggerConfig | undefined) {
             const tags: string[] = req.body?.tags ?? [];
             if (sessionID === undefined) return res.status(400).send({ "error": "bad formatting" });
             if (title === undefined) return res.status(400).send({ "error": "bad formatting" });
-            await Logger.log(sessionID, title, message, tags);
+            await Logger.log(title, message, tags);
             return res.status(201).send();
         } catch (error) {
             await Logger.log(
-                `Logger Session - ${loggerSessionID}`,
                 `Logger Server Error - POST Single Log`,
                 (error as any).message,
                 ["type:error"]
@@ -48,7 +44,6 @@ export function initLoggerRoute(initConfig?: LoggerConfig | undefined) {
             return res.status(200).send()
         } catch (error) {
             await Logger.log(
-                `Logger Session - ${loggerSessionID}`,
                 `Logger Server Error - POST Batch Logs`,
                 (error as any).message,
                 ["type:error"]

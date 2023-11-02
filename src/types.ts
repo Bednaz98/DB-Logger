@@ -15,10 +15,11 @@ export interface LoggerConfig {
     filterOptions?: JsonMask2Configs
     enableDBLog?: boolean,
     printConsole?: boolean,
+    sessionID?: string
 }
 
 export interface Logger {
-    log: (sessionID: string, title: string, message?: (string | JSON | Object), tags?: string[]) => Promise<void>
+    log: (title: string, message?: (string | JSON | Object), tags?: string[]) => Promise<void>
     batchLogs: (logs: Log[]) => Promise<boolean>
     batchSendLogs: () => Promise<boolean>
 }

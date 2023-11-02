@@ -22,9 +22,10 @@ const jsonMaskConfig: maskData.JsonMask2Configs = {
 export default class DBLogger implements Logger {
     private config: LoggerConfig | undefined;
     private LogData: Log[] = []
-    private loggerSessionID = v4()
+    private loggerSessionID: string
     constructor(initConfig?: LoggerConfig) {
         this.config = initConfig;
+        this.loggerSessionID = this.config?.sessionID ?? v4();
     }
 
     generateID() {
@@ -57,11 +58,11 @@ export default class DBLogger implements Logger {
     }
     private clearLogs() { this.LogData = [] }
 
-    async log(sessionID: string, title: string, message?: string | Object | JSON | undefined, tags?: string[]) {
+    async log(title: string, message?: string | Object | JSON | undefined, tags?: string[]) {
         const filterOptions: maskData.JsonMask2Configs = (this.config?.filterOptions ?? jsonMaskConfig)
         const tempMessage = maskData.maskJSON2(message ?? {}, filterOptions);
         const data: Log = {
-            sessionID, title, message: JSON.stringify(tempMessage), tags: (tags ?? []),
+            sessionID: this.loggerSessionID, title, message: JSON.stringify(tempMessage), tags: (tags ?? []),
             ... this.defaultProps()
         }
         if (this.config?.printConsole) console.log(data);
