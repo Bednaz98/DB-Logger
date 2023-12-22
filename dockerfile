@@ -2,7 +2,6 @@ FROM node:18-alpine
 WORKDIR /usr/app
 COPY ./ /usr/app
 RUN npm install
-RUN nx prisma generate
 ARG PRIVATE_NPM_TOKEN
 ARG DB_URL
 ARG EXPOSE_PORT=3000

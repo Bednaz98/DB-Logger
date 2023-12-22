@@ -12,13 +12,15 @@
   ],
   "scripts": {
     "start": "ts-node ./src/server.ts",
+    "postinstall": "npm run generate",
     "test": "jest",
     "lint": "npx eslint . --max-warnings 0",
     "increment": "npm version patch",
     "lint-fix": "eslint --fix",
     "build": "tsc -b",
     "pr-test": "npm run test",
-    "test-pack": "npm i && npm run build && npm pack",
+    "generate": "npx prisma generate",
+    "test-pack": "npm i && npm run generate && npm run build && npm pack",
     "prisma-sync": "npx prisma migrate dev",
     "prisma-browser": "npx prisma studio"
   },
