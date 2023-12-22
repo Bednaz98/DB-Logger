@@ -1,0 +1,9 @@
+node_modules
+test
+.git
+*Dockerfile*
+*docker-compose*
+.eslint.cjs
+.gitattributes
+.gitignore
+jest.config.ts

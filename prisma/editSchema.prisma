@@ -1,9 +1,14 @@
 model Log {
-  id               String   @id
-  sessionID        String   @default(uuid())
-  displayTimeStamp String   @default("")
-  timeStamp        BigInt
+  id               String  @id @unique @default(uuid())
+  applicationName  String  @default("N/A")
+  environment      String  @default("N/A")
+  logLevel         String
+  sessionID        String  @default(uuid())
+  displayTimeStamp String  @default("")
+  clientTimeStamp  BigInt? @default(-1)
+  clientLogId      String? @default("N/A")
+  serverTimeStamp  BigInt
   title            String
-  tags             String[]
-  message          String?
+  message          String? @default("N/A")
+  tags             String
 }
