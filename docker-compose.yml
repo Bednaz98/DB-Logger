@@ -1,5 +1,3 @@
-version: '3.3'
-
 services:
   logger-service:
     environment:
@@ -7,4 +5,4 @@ services:
       - LOGGER_PORT: {{ LOGGER_PORT }}
     image: ghcr.io/bednaz98/db-logger:latest
     ports:
-      - {{ LOGGER_PORT }}: {{ LOGGER_PORT }}
+      - {{ LOGGER_PORT }}:{{ LOGGER_PORT }}
