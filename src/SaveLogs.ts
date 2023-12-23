@@ -2,7 +2,7 @@ import { ClientLogData } from "@jabz/server-communication/lib/axios/types-reques
 import { prisma } from "./prisma";
 import { Log } from "@prisma/client"
 import { v4 } from "uuid";
-
+import { defaultAPI_Tags } from "./apiLoggerDefaultTags";
 
 
 
@@ -21,7 +21,7 @@ export async function SaveLogs(applicationName: string, environment: string, inc
             serverTimeStamp: BigInt(serverTimeStamp),
             message: e.message ?? null,
             logLevel: JSON.stringify(e.logLevel),
-            tags: JSON.stringify(e.tags)
+            tags: JSON.stringify([...e.tags, ...defaultAPI_Tags])
         }
         return temp
     })
