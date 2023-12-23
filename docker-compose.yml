@@ -1,9 +1,9 @@
 services:
   logger-service:
     environment:
-      - LOG_DATABASE_URL: {{ LOG_DATABASE_URL }}
-      - LOGGER_PORT: {{ LOGGER_PORT }}
-      - DB_LOGGER_ENVIORMENT: {{ LOGGER_ENV }}
+      - LOG_DATABASE_URL= {{ LOG_DATABASE_URL }}
+      - LOGGER_PORT= {{ LOGGER_PORT }}
+      - DB_LOGGER_ENVIORMENT= {{ LOGGER_ENV }}
     image: ghcr.io/bednaz98/db-logger:latest
     ports:
       - {{ LOGGER_PORT }}:{{ LOGGER_PORT }}
