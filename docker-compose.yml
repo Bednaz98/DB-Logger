@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  logger-service:
+    build: ./
+    ports:
+      - 3000:3000
