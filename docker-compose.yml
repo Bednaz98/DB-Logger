@@ -2,6 +2,6 @@ version: "3"
 
 services:
   logger-service:
-    image: ghcr.io/bednaz98/db-logger:latest
+    image: ghcr.io/bednaz98/db-logger:main
     ports:
       - 3000:3000
