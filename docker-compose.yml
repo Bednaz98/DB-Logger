@@ -1,9 +1,15 @@
 services:
   logger-service:
     environment:
-      - LOG_DATABASE_URL= {{ LOG_DATABASE_URL }}
+      - LOG_DATABASE_URL= mysql://root:{{MYSQL_PASSWORD}}@localhost:3306/log
       - LOGGER_PORT= {{ LOGGER_PORT }}
       - DB_LOGGER_ENVIORMENT= {{ LOGGER_ENV }}
     image: ghcr.io/bednaz98/db-logger:main
     ports:
       - {{ LOGGER_PORT }}:{{ LOGGER_PORT }}
+    restart: always
+  database:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD= {{MYSQL_PASSWORD}}
+    restart: always
