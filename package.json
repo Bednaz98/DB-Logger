@@ -11,7 +11,7 @@
     "prisma"
   ],
   "scripts": {
-    "start": "npm run generate && ts-node ./src/server.ts",
+    "start": "prisma-sync && ts-node ./src/server.ts",
     "postinstall": "npm run generate",
     "test": "jest",
     "lint": "npx eslint . --max-warnings 0",
