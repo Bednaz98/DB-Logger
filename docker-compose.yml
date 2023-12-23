@@ -1,14 +1,14 @@
 services:
   database:
-    image: mysql
+    image: postgres
     environment:
-      - MYSQL_ROOT_PASSWORD= {{MYSQL_ROOT_PASSWORD}}
+      - DB_PASSWORD= {{DB_PASSWORD}}
     ports:
-      - {{ SQL_PORT }}:3306
+      - {{ DB_PORT }}:5432
     restart: always
   logger-service:
     environment:
-      - LOG_DATABASE_URL= mysql://root:{{MYSQL_ROOT_PASSWORD}}@localhost:{{ SQL_PORT }}/log
+      - LOG_DATABASE_URL= postgres://postgres:{{DB_PASSWORD}}@localhost:{{ DB_PORT  }}/log
       - LOGGER_PORT= {{ LOGGER_PORT }}
       - DB_LOGGER_ENVIORMENT= {{ LOGGER_ENV }}
     image: ghcr.io/bednaz98/db-logger:main
