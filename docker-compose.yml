@@ -11,5 +11,5 @@ services:
   database:
     image: mysql
     environment:
-      MYSQL_ROOT_PASSWORD= {{MYSQL_ROOT_PASSWORD}}
+      - MYSQL_ROOT_PASSWORD= {{MYSQL_ROOT_PASSWORD}}
     restart: always
