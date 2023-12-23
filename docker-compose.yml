@@ -1,10 +1,10 @@
-version: "3"
+version: "3.3"
 
 services:
   logger-service:
     environment:
-      - LOG_DATABASE_URL = ${LOG_DATABASE_URL}
-      - LOGGER_PORT = ${LOGGER_PORT}
+      - "LOG_DATABASE_URL: ${ LOG_DATABASE_URL }"
+      - "LOGGER_PORT: ${ LOGGER_PORT }"
     image: ghcr.io/bednaz98/db-logger:latest
     ports:
-      - ${LOGGER_PORT}:${LOGGER_PORT}
+      - "${ LOGGER_PORT }: ${ LOGGER_PORT }"
