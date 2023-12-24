@@ -3,12 +3,13 @@ services:
     image: postgres
     environment:
       - POSTGRES_PASSWORD= {{ DB_PASSWORD }}
+      - POSTGRES_USER={{ DB_USER }}
     ports:
       - {{ DB_PORT }}:5432
     restart: always
   logger-service:
     environment:
-      - LOG_DATABASE_URL= postgresql://postgres:{{DB_PASSWORD}}@localhost:{{ DB_PORT  }}/log
+      - LOG_DATABASE_URL= postgresql://{{ DB_USER }}:{{DB_PASSWORD}}@localhost:{{ DB_PORT  }}/log
       - LOGGER_PORT= {{ LOGGER_PORT }}
       - DB_LOGGER_ENVIORMENT= {{ LOGGER_ENV }}
     image: ghcr.io/bednaz98/db-logger:main
