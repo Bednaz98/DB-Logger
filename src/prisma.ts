@@ -14,9 +14,10 @@ export function getDBStringDebug(envString: string | undefined) {
 const getPrisma = (): PrismaClient => {
     console.log("generating prisma client")
     try {
-        const dbString = process?.env?.["LOG_DATABASE_URL"]
-        console.log("prisma client db string: ", getDBStringDebug(dbString))
+        const dbString = process?.env?.["LOG_DATABASE_URL"];
         if (dbString) {
+            console.log("using local db string")
+            console.log("prisma client db string: ", getDBStringDebug(dbString))
             return new PrismaClient({
                 datasources: {
                     db: {
@@ -28,9 +29,10 @@ const getPrisma = (): PrismaClient => {
         console.log('direct db string injection failed, using default prisma client\n');
         return new PrismaClient()
     } catch (error) {
+        console.log("prisma client error, using default client")
+        console.error(error)
         return new PrismaClient()
     }
-
 }
 
 export const prisma = getPrisma();
