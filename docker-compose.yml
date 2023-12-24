@@ -8,5 +8,3 @@ services:
     ports:
       - {{ LOGGER_PORT }}:{{ LOGGER_PORT }}
     restart: always
-    depends_on:
-      - database
