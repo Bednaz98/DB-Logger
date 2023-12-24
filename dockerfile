@@ -9,6 +9,8 @@ ENV LOGGER_PORT=${EXPOSE_PORT}
 ENV LOG_DATABASE_URL=${LOG_DATABASE_URL}
 ENV DB_LOGGER_ENVIORMENT=${LOGGER_ENV}
 RUN npm install
-RUN npm run postinstall
+RUN npm uninstall prisma
+RUN npm install prisma
+RUN npx prisma generate
 EXPOSE ${EXPOSE_PORT}
 CMD ["npm", "start"]
