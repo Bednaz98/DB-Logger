@@ -4,7 +4,7 @@ COPY ./ /usr/app
 
 ARG EXPOSE_PORT=3000
 ARG LOGGER_ENV="DEV"
-ARG LOG_DATABASE_URL="postgres://postgres:exmaple@localhost:5432/log"
+ARG LOG_DATABASE_URL="postgresql://postgres:exmaple@localhost:5432/log"
 ENV LOGGER_PORT=${EXPOSE_PORT}
 ENV LOG_DATABASE_URL=${LOG_DATABASE_URL}
 ENV DB_LOGGER_ENVIORMENT=${LOGGER_ENV}

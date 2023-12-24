@@ -8,7 +8,7 @@ services:
     restart: always
   logger-service:
     environment:
-      - LOG_DATABASE_URL= postgres://postgres:{{DB_PASSWORD}}@localhost:{{ DB_PORT  }}/log
+      - LOG_DATABASE_URL= postgresql://postgres:{{DB_PASSWORD}}@localhost:{{ DB_PORT  }}/log
       - LOGGER_PORT= {{ LOGGER_PORT }}
       - DB_LOGGER_ENVIORMENT= {{ LOGGER_ENV }}
     image: ghcr.io/bednaz98/db-logger:main
