@@ -2,7 +2,7 @@ services:
   database:
     image: postgres
     environment:
-      - DB_PASSWORD= {{DB_PASSWORD}}
+      - POSTGRES_PASSWORD= {{ DB_PASSWORD }}
     ports:
       - {{ DB_PORT }}:5432
     restart: always
