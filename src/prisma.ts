@@ -6,8 +6,7 @@ export function getDBStringDebug(envString: string | undefined) {
     const dbType = firstSplit[0]
     const ipAddress = firstSplit[1].split(':')[1].split("@")[1]
     const port = firstSplit[1].split(':')[2].split("/")[0]
-
-    return (`\n- db type: ${dbType}\n- host ip: ${ipAddress}:${port}\n`);
+    return (`\n- db type: ${dbType}\n- host ip: ${ipAddress}:${port}\n- white check: ${envString.trim() === envString}`);
 }
 
 
@@ -21,7 +20,7 @@ const getPrisma = (): PrismaClient => {
             return new PrismaClient({
                 datasources: {
                     db: {
-                        url: dbString,
+                        url: dbString.trim(),
                     },
                 },
             })
