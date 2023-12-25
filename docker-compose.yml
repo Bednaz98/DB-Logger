@@ -2,7 +2,7 @@ services:
   database:
     image: postgres
     environment:
-      - POSTGRES_PASSWORD= {{ DB_PASSWORD }}
+      - POSTGRES_PASSWORD={{ DB_PASSWORD }}
       - POSTGRES_USER={{ DB_USER }}
     ports:
       - 5432:5432
@@ -11,9 +11,9 @@ services:
       - backend
   logger-service:
     environment:
-      - LOG_DATABASE_URL= postgresql://{{ DB_USER }}:{{DB_PASSWORD}}@database:5432/log
-      - LOGGER_PORT= {{ LOGGER_PORT }}
-      - DB_LOGGER_ENVIORMENT= {{ LOGGER_ENV }}
+      - LOG_DATABASE_URL=postgresql://{{ DB_USER }}:{{DB_PASSWORD}}@database:5432/log
+      - LOGGER_PORT={{ LOGGER_PORT }}
+      - DB_LOGGER_ENVIORMENT={{ LOGGER_ENV }}
     image: ghcr.io/bednaz98/db-logger:main
     ports:
       - {{ LOGGER_PORT }}:{{ LOGGER_PORT }}
