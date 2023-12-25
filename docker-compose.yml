@@ -20,6 +20,8 @@ services:
     restart: always
     depends_on:
       - database
+    networks:
+      - backend
 networks:
   backend:
     driver: bridge
