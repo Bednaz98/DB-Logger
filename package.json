@@ -1,6 +1,6 @@
 {
   "name": "@jabz/db-logger",
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "",
   "main": "./lib/index.js",
   "publishConfig": {
@@ -21,7 +21,7 @@
     "pr-test": "npm run test",
     "generate": "npx prisma generate",
     "test-pack": "npm i && npm run generate && npm run build && npm pack",
-    "prisma-sync": "npx prisma migrate dev",
+    "prisma-sync": "npx prisma db push",
     "prisma-browser": "npx prisma studio"
   },
   "dependencies": {
