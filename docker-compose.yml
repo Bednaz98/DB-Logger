@@ -9,7 +9,7 @@ services:
     restart: always
   logger-service:
     environment:
-      - LOG_DATABASE_URL=postgresql://{{ DB_USER }}:{{DB_PASSWORD}}@localhost:5432/log
+      - LOG_DATABASE_URL=postgresql://{{ DB_USER }}:{{DB_PASSWORD}}@http://localhost:5432/log
       - LOGGER_PORT={{ LOGGER_PORT }}
       - DB_LOGGER_ENVIORMENT={{ LOGGER_ENV }}
     image: ghcr.io/bednaz98/db-logger:main
