@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,16 +8,16 @@ datasource db {
 }
 
 model Log {
-  id               String  @id @unique @default(uuid())
-  applicationName  String  @default("N/A")
-  environment      String  @default("N/A")
+  id               String   @id @unique @default(uuid())
+  applicationName  String   @default("N/A")
+  environment      String   @default("N/A")
   logLevel         String
-  sessionID        String  @default(uuid())
-  displayTimeStamp String  @default("")
-  clientTimeStamp  BigInt? @default(-1)
-  clientLogId      String? @default("N/A")
+  sessionID        String   @default(uuid())
+  displayTimeStamp String   @default("")
+  clientTimeStamp  BigInt?  @default(-1)
+  clientLogId      String?  @default("N/A")
   serverTimeStamp  BigInt
   title            String
-  message          String? @default("N/A")
-  tags             String
+  message          String?  @default("N/A")
+  tags             String[]
 }

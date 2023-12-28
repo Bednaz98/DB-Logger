@@ -10,7 +10,7 @@ import { getDBStringDebug } from "./prisma";
 
 
 
-console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
+console.log('server initiating ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -35,6 +35,6 @@ function getPort() {
 
 const port = getPort();
 console.log(getDBStringDebug(process.env?.["LOG_DATABASE_URL"]));
-const loggerServer = app.listen(port, () => { console.log(`Logger Server Start on Port ${port}\n\n`) });
-export default loggerServer;
+const server = app.listen(port, () => { console.log(`Logger Server Start on Port ${port}\n\n`) });
+export default server;
 

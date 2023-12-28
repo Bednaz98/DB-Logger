@@ -21,7 +21,7 @@ export async function SaveLogs(applicationName: string, environment: string, inc
             serverTimeStamp: BigInt(serverTimeStamp),
             message: e.message ?? null,
             logLevel: JSON.stringify(e.logLevel),
-            tags: JSON.stringify([...e.tags, ...defaultAPI_Tags])
+            tags: [...e.tags, ...defaultAPI_Tags]
         }
         return temp
     })
