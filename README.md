@@ -12,7 +12,7 @@ In the docker-compose file, Postgres configurations are provided as a quick setu
 
 A client should create a post request to the logger server with the following body:
 
-``` TypeScript
+``` JavaScript
 {
     clientLogId: string;
     clientTimeStamp: number;
